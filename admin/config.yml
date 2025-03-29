@@ -1,18 +1,17 @@
 backend:
-  name: github
-  repo: alexaesco/AlexaEsco
-  branch: main
+  name: git-gateway
+  branch: main  # or 'master' or whichever branch Netlify builds from
 
-media_folder: "assets/images/uploads" # Where images are stored
-public_folder: "/assets/images/uploads"
+media_folder: "assets/uploads"  # folder for uploaded images
+public_folder: "/assets/uploads" # how images are referenced in the site
 
 collections:
-  - name: "blog"
-    label: "Blog"
-    folder: "_posts"
-    create: true
+  - name: "blog"       # The 'folder' or 'type' of content
+    label: "Blog Posts"
+    folder: "blog"     # Where in your repo the Markdown files live
+    create: true       # Allows creation of new files
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Date", name: "date", widget: "datetime"}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Body", name: "body", widget: "markdown" }
