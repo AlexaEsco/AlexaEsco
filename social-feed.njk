@@ -1,0 +1,144 @@
+---
+layout: base.njk
+title: Social Feed
+---
+
+<div class="social-feed-container">
+    <div class="social-feed-header">
+        <h1>My Social Feed</h1>
+        <p>Stay updated with my latest content across all platforms</p>
+    </div>
+    
+    <!-- Juicer.io Feed -->
+    <div id="juicer-container" class="juicer-container">
+        <script type="text/javascript" src="https://www.juicer.io/embed/alexaesco/embed-code.js" async defer></script>
+    </div>
+</div>
+
+<style>
+    .social-feed-container {
+        padding: 40px 20px;
+        min-height: 800px;
+    }
+    
+    .social-feed-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    
+    .social-feed-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+    }
+    
+    .social-feed-header p {
+        font-size: 1.1rem;
+        color: #666;
+    }
+    
+    .juicer-container {
+        min-height: 500px;
+        width: 100%;
+    }
+    
+    .juicer-feed {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .juicer-feed h1.referral {
+        opacity: 0.5;
+        font-size: 0.7rem !important;
+        margin-top: 30px !important;
+    }
+    
+    .juicer-feed .j-paginate {
+        background-color: var(--accent-color);
+        color: white;
+        border: none;
+        transition: background-color 0.3s;
+        padding: 8px 16px;
+        border-radius: 20px;
+    }
+    
+    .juicer-feed .j-paginate:hover {
+        background-color: #ff5ca8;
+    }
+    
+    /* Ensure loading state is visible */
+    .juicer-feed.loading {
+        opacity: 0.5;
+        min-height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    /* Mobile Responsive Styles */
+    @media (max-width: 768px) {
+        .social-feed-container {
+            padding: 20px 15px;
+            min-height: 600px;
+        }
+        
+        .social-feed-header h1 {
+            font-size: 2rem;
+        }
+        
+        .social-feed-header p {
+            font-size: 1rem;
+        }
+        
+        .juicer-container {
+            min-height: 400px;
+        }
+        
+        /* Adjust Juicer feed items for mobile */
+        .juicer-feed .feed-item {
+            margin-bottom: 20px !important;
+        }
+        
+        .juicer-feed .feed-item img {
+            max-width: 100% !important;
+            height: auto !important;
+        }
+        
+        .juicer-feed .feed-item .j-text {
+            font-size: 0.9rem !important;
+            line-height: 1.4 !important;
+        }
+        
+        .juicer-feed .j-paginate {
+            padding: 6px 12px;
+            font-size: 0.9rem;
+        }
+    }
+    
+    /* Small Mobile Devices */
+    @media (max-width: 480px) {
+        .social-feed-header h1 {
+            font-size: 1.75rem;
+        }
+        
+        .social-feed-header p {
+            font-size: 0.9rem;
+        }
+        
+        .juicer-feed .feed-item .j-text {
+            font-size: 0.85rem !important;
+        }
+    }
+</style>
+
+<script>
+    // Check if Juicer feed is loaded properly
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+            // If no feed items are found after 3 seconds, add a fallback message
+            const feedItems = document.querySelectorAll('.feed-item');
+            if (feedItems.length === 0) {
+                document.getElementById('juicer-container').innerHTML += '<div class="juicer-error">Loading social media feed... If no content appears, please check your connection or try again later.</div>';
+            }
+        }, 3000);
+    });
+</script> 
